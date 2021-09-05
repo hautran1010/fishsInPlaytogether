@@ -34,17 +34,22 @@ $(() => {
    })
 
    $tbody.append(outputHtml);
+   var minutes = date.getMinutes() ;
    setInterval(() => { 
-    minutes = date.getMinutes();
     result = dataNew.filter(item => {
         if (+item.to <= minutes && minutes <= +item.from) {
             return item;
         }
      });
+     for(item of dataNew) {
+         tr = $tbody.find(`#${item.id}`);
+         tr.removeClass('table-danger');
+     }
      for (item of result) {
         tr = $tbody.find(`#${item.id}`);
         tr.addClass('table-danger');
      }
+    //  console.log(result);
    }, 1000);
   
 });
