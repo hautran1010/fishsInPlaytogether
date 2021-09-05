@@ -39,7 +39,7 @@ $(() => {
    setInterval(function() { 
     const date = new Date();
     minutes = date.getMinutes();
-    console.log(minutes);
+    // console.log(minutes);
     result = dataNew.filter(item => {
         if (+item.to <= minutes && minutes <= +item.from) {
             return item;
