@@ -19,7 +19,8 @@ var dataNew = data.map(item => {
     if (to == '55') from = 60;
     return {...item, to: +to, from: +from};
 })
-const date = new Date();
+
+var minutes =  9;
 $(() => {
 //    var timeIngame = prompt('Nhap thoi gian trong game');
    $tbody = $('.playTogether > tbody');
@@ -34,8 +35,11 @@ $(() => {
    })
 
    $tbody.append(outputHtml);
-   var minutes = date.getMinutes() ;
-   setInterval(() => { 
+   
+   setInterval(function() { 
+    const date = new Date();
+    minutes = date.getMinutes();
+    console.log(minutes);
     result = dataNew.filter(item => {
         if (+item.to <= minutes && minutes <= +item.from) {
             return item;
