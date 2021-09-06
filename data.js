@@ -16,7 +16,7 @@ var data = [
 var dataNew = data.map(item => {
     let to = item.time.slice(0,2);
     let from = item.time.slice(3,5);
-    if (to == '55') from = 60;
+    if (to == '55') from = 65;
     return {...item, to: +to, from: +from};
 })
 
@@ -37,11 +37,10 @@ $(() => {
    $tbody.append(outputHtml);
    
    setInterval(function() { 
-    const date = new Date();
+    var date = new Date();
     minutes = date.getMinutes();
-    // console.log(minutes);
     result = dataNew.filter(item => {
-        if (+item.to <= minutes && minutes <= +item.from) {
+        if (+item.to <= minutes && minutes <= +item.from || (minutes <= 5 && item.to == 55)) {
             return item;
         }
      });
@@ -53,7 +52,7 @@ $(() => {
         tr = $tbody.find(`#${item.id}`);
         tr.addClass('table-danger');
      }
-    //  console.log(result);
+     console.log(result);
    }, 1000);
   
 });
