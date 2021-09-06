@@ -52,7 +52,7 @@ $(() => {
         tr = $tbody.find(`#${item.id}`);
         tr.addClass('table-danger');
      }
-     console.log(result);
+    //  console.log(result);
    }, 1000);
   
 });
